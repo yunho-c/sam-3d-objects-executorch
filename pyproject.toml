@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sam-3d-objects-executorch"
+dynamic = ["version"]
+description = "A python project for sam-3d-objects-executorch"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.hatch.version]
+path = "src/sam_3d_objects_executorch/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sam_3d_objects_executorch"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64", "win-64"]
+
+[tool.pixi.dependencies]
+python = "3.10.*"
+
+[tool.pixi.pypi-dependencies]
+sam-3d-objects-executorch = { path = ".", editable = true }
+pytest = "*"
